@@ -14,7 +14,7 @@ const Details = () => {
     const { itemID } = useParams()
 
     const [items, setItems] = useState([])
-    const [orders, setOrders] = useState([]);
+    const [orders, setOrders] = useState(getDataFromStore);
     const [orderdItem, setOrderdItem] = useState([]);
 
     const orderdItemDetails = item => {
@@ -34,7 +34,7 @@ const Details = () => {
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${itemID}`)
             .then(res => res.json())
             .then(data => setItems(data.drinks))
-    }, [])
+    }, [orders])
 
     // Local storage
     useEffect(() => {
