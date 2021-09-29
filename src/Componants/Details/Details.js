@@ -5,9 +5,13 @@ import OrderdDetails from '../OrderdItemDetails/OrderdDetails';
 import Items from '../SIngleItems/Items';
 
 const getDataFromStore = () => {
-    const data = localStorage.getItem('cart')
-
-    return JSON.parse(data)
+    let list = localStorage.getItem('cart')
+    if (list) {
+        return JSON.parse(localStorage.getItem('cart'));
+    }
+    else {
+        return []
+    }
 }
 
 const Details = () => {
@@ -34,7 +38,7 @@ const Details = () => {
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${itemID}`)
             .then(res => res.json())
             .then(data => setItems(data.drinks))
-    }, [orders])
+    }, [])
 
     // Local storage
     useEffect(() => {
