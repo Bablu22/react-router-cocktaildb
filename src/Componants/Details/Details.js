@@ -14,7 +14,7 @@ const Details = () => {
     const { itemID } = useParams()
 
     const [items, setItems] = useState([])
-    const [orders, setOrders] = useState(getDataFromStore);
+    const [orders, setOrders] = useState([]);
     const [orderdItem, setOrderdItem] = useState([]);
 
     const orderdItemDetails = item => {
